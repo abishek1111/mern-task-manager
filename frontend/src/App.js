@@ -18,6 +18,7 @@ function App() {
   };
 
 const deleteTask = async (id) => {
+  console.log("DELETE CLICKED" , id);
   try {
     await axios.delete('http:localhost:5000/tasks/${id}');
     fetchTasks();
@@ -26,7 +27,7 @@ const deleteTask = async (id) => {
   }
 };
 const toggleTask = async (id) => {
-  await axios.put('http://localhost:5000/tasks/${id}');
+  await axios.put('http:localhost:5000/tasks/${id}');
   fetchTasks();
 };
 
@@ -51,7 +52,9 @@ const toggleTask = async (id) => {
 
       <button
         style={styles.deleteBtn}
-        onClick={() => deleteTask(task._id)}
+        onClick={(e) => {e.stopPropagation();
+          deleteTask(task._id);
+        }}
       >
         ❌
       </button>
