@@ -20,7 +20,7 @@ router.put("/:id", async (req, res) => {
   res.json(task);
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete(`/:id`, async (req, res) => {
   try {
     const deletedTask = await Task.findByIdAndDelete(req.params.id);
 
